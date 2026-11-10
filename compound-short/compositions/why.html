@@ -1,0 +1,27 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #ffd21f; font-family: "Archivo Black", sans-serif; color: #121212; }
+    .why-l { position: absolute; left: 90px; width: 900px; }
+    #why-q { top: 200px; font-size: 290px; line-height: 1; letter-spacing: -0.03em; color: #e8452c; }
+    #why-y { top: 520px; font-size: 168px; line-height: 0.95; letter-spacing: -0.02em; color: #0b7a3e; }
+    #why-y small { display: block; font-size: 84px; color: #121212; margin-top: 14px; letter-spacing: 0; }
+    #why-b { top: 980px; width: 860px; height: 280px; }
+    #why-b-in { position: absolute; inset: 0; background: #121212; color: #ffd21f; display: flex; flex-direction: column; justify-content: center; padding-left: 44px; font-family: "Inter", sans-serif; font-weight: 900; font-size: 54px; line-height: 1.15; }
+    #why-b-in b { font-family: "Archivo Black", sans-serif; font-weight: 400; font-size: 124px; color: #fff; line-height: 1.05; }
+  </style>
+  <div id="root" data-composition-id="why" data-width="1080" data-height="1920">
+    <div id="why-q" class="clip why-l" data-start="0" data-duration="6.958"><div id="why-q-in">WHY?</div></div>
+    <div id="why-y" class="clip why-l" data-start="0" data-duration="6.958"><div id="why-y-in">10 EXTRA<br />YEARS<small>TO GROW</small></div></div>
+    <div id="why-b" class="clip why-l" data-start="0" data-duration="6.958"><div id="why-b-in"><div>worth more than Jake's extra</div><b>$48,000</b></div></div>
+  </div>
+  <script>
+    {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#why-q-in", { scale: 1.5, opacity: 0, transformOrigin: "0% 50%" }, { scale: 1, opacity: 1, duration: 0.24, ease: "back.out(1.8)" }, 0.15);
+      tl.fromTo("#why-y-in", { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.4, ease: "power3.out" }, 1.499);
+      tl.fromTo("#why-b-in", { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.3, ease: "power4.out" }, 4.259);
+      tl.to({}, { duration: 0.01 }, 6.938);
+      window.__timelines["why"] = tl;
+    }
+  </script>
+</template>

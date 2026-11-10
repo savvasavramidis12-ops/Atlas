@@ -16,21 +16,21 @@
     #race-fine { position: absolute; left: 90px; top: 392px; width: 900px; font-family: "Inter", sans-serif; font-weight: 700; font-size: 32px; }
   </style>
   <div id="root" data-composition-id="race" data-width="1080" data-height="1920">
-    <div id="race-age" class="clip" data-start="0" data-duration="7.4"><small>AGE</small><span id="race-age-n">25</span></div>
-    <div id="race-fine" class="clip" data-start="0" data-duration="7.4">Example: both earn 7% a year</div>
-    <div id="race-mcol" class="clip race-col" data-start="0" data-duration="7.4" data-layout-allow-overflow>
+    <div id="race-age" class="clip" data-start="0" data-duration="12.389"><small>AGE</small><span id="race-age-n">25</span></div>
+    <div id="race-fine" class="clip" data-start="0" data-duration="12.389">Example: both earn 7% a year</div>
+    <div id="race-mcol" class="clip race-col" data-start="0" data-duration="12.389" data-layout-allow-overflow>
       <div id="race-mfill" class="race-fill"></div>
       <div id="race-mval" class="race-val">$0</div>
     </div>
-    <div id="race-jcol" class="clip race-col" data-start="0" data-duration="7.4" data-layout-allow-overflow>
+    <div id="race-jcol" class="clip race-col" data-start="0" data-duration="12.389" data-layout-allow-overflow>
       <div id="race-jfill" class="race-fill"></div>
       <div id="race-jval" class="race-val">$0</div>
     </div>
-    <div id="race-mname" class="clip race-name" data-start="0" data-duration="7.4">MAYA</div>
-    <div id="race-jname" class="clip race-name" data-start="0" data-duration="7.4">JAKE</div>
-    <div id="race-baseclip" class="clip" data-start="0" data-duration="7.4"><div id="race-base"></div></div>
-    <div id="race-mnote" class="clip race-note" data-start="0" data-duration="7.4"><div id="race-mnote-in">STOPPED AT 35</div></div>
-    <div id="race-jnote" class="clip race-note" data-start="0" data-duration="7.4"><div id="race-jnote-in">STARTED AT 35</div></div>
+    <div id="race-mname" class="clip race-name" data-start="0" data-duration="12.389">MAYA</div>
+    <div id="race-jname" class="clip race-name" data-start="0" data-duration="12.389">JAKE</div>
+    <div id="race-baseclip" class="clip" data-start="0" data-duration="12.389"><div id="race-base"></div></div>
+    <div id="race-mnote" class="clip race-note" data-start="0" data-duration="12.389"><div id="race-mnote-in">STOPPED AT 35</div></div>
+    <div id="race-jnote" class="clip race-note" data-start="0" data-duration="12.389"><div id="race-jnote-in">STARTED AT 35</div></div>
   </div>
   <script>
     {
@@ -54,13 +54,12 @@
       };
       const tl = gsap.timeline({ paused: true });
       tl.fromTo("#race-base", { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.3, ease: "power4.out" }, 0);
-      tl.fromTo(p, { m: 0 }, { m: 120, duration: 1.4, ease: "none", onUpdate: draw }, 0.4);
-      tl.fromTo(p, { m: 120 }, { m: 480, duration: 3.7, ease: "power1.in", onUpdate: draw, immediateRender: false }, 1.8);
-      tl.fromTo("#race-mnote-in", { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 1, duration: 0.2, ease: "back.out(2)" }, 1.8);
-      tl.fromTo("#race-jnote-in", { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 1, duration: 0.2, ease: "back.out(2)" }, 2.0);
-      tl.fromTo("#race-mval", { scale: 1 }, { scale: 1.18, duration: 0.18, ease: "power2.out", yoyo: true, repeat: 1, transformOrigin: "50% 100%" }, 5.7);
-      tl.fromTo("#race-jfill", { opacity: 1 }, { opacity: 0.45, duration: 0.3, ease: "power2.out" }, 6.2);
-      tl.to({}, { duration: 0.01 }, 7.39);
+      tl.fromTo(p, { m: 0 }, { m: 120, duration: 2.594, ease: "none", onUpdate: draw }, 1.275);
+      tl.fromTo(p, { m: 120 }, { m: 480, duration: 6.249, ease: "power1.in", onUpdate: draw, immediateRender: false }, 5.59);
+      tl.fromTo("#race-mnote-in", { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 1, duration: 0.2, ease: "back.out(2)" }, 4.39);
+      tl.fromTo("#race-jnote-in", { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 1, duration: 0.2, ease: "back.out(2)" }, 5.39);
+      tl.fromTo("#race-mval", { scale: 1 }, { scale: 1.18, duration: 0.16, ease: "power2.out", yoyo: true, repeat: 1, transformOrigin: "50% 100%" }, 11.889);
+      tl.to({}, { duration: 0.01 }, 12.369);
       draw();
       window.__timelines["race"] = tl;
     }

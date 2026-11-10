@@ -4,28 +4,26 @@
     #hook-title { position: absolute; left: 90px; top: 250px; width: 900px; font-size: 172px; line-height: 0.94; letter-spacing: -0.02em; }
     #hook-title span { display: block; }
     #hook-bar { position: absolute; left: 90px; top: 790px; width: 820px; height: 26px; background: #121212; }
-    .hook-tag { position: absolute; top: 900px; width: 430px; height: 330px; display: flex; flex-direction: column; justify-content: center; padding-left: 40px; color: #fff; }
+    .hook-tag { position: absolute; top: 900px; width: 430px; height: 330px; color: #fff; }
     .hook-tag b { font-size: 104px; font-weight: 400; line-height: 1; }
     .hook-tag i { font-family: "Inter", sans-serif; font-style: normal; font-weight: 700; font-size: 44px; margin-top: 16px; }
-    #hook-maya { left: 90px; }
-    #hook-maya-in { position: absolute; inset: 0; background: #0b7a3e; display: flex; flex-direction: column; justify-content: center; padding-left: 40px; }
-    #hook-jake { left: 550px; }
-    #hook-jake-in { position: absolute; inset: 0; background: #e8452c; display: flex; flex-direction: column; justify-content: center; padding-left: 40px; }
+    #hook-maya { left: 90px; } #hook-jake { left: 550px; }
+    .hook-in { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; padding-left: 40px; }
+    #hook-maya-in { background: #0b7a3e; } #hook-jake-in { background: #e8452c; }
   </style>
   <div id="root" data-composition-id="hook" data-width="1080" data-height="1920">
-    <h1 id="hook-title" class="clip" data-start="0" data-duration="2.8"><span>WHO</span><span>RETIRES</span><span>RICHER?</span></h1>
-    <div id="hook-barclip" class="clip" data-start="0" data-duration="2.8"><div id="hook-bar"></div></div>
-    <div id="hook-maya" class="clip hook-tag" data-start="0" data-duration="2.8"><div id="hook-maya-in"><b>MAYA</b><i>invests 10 years</i></div></div>
-    <div id="hook-jake" class="clip hook-tag" data-start="0" data-duration="2.8"><div id="hook-jake-in"><b>JAKE</b><i>invests 30 years</i></div></div>
+    <h1 id="hook-title" class="clip" data-start="0" data-duration="3.841"><span>WHO</span><span>RETIRES</span><span>RICHER?</span></h1>
+    <div id="hook-barclip" class="clip" data-start="0" data-duration="3.841"><div id="hook-bar"></div></div>
+    <div id="hook-maya" class="clip hook-tag" data-start="0" data-duration="3.841"><div id="hook-maya-in" class="hook-in"><b>MAYA</b><i>invests 10 years</i></div></div>
+    <div id="hook-jake" class="clip hook-tag" data-start="0" data-duration="3.841"><div id="hook-jake-in" class="hook-in"><b>JAKE</b><i>invests 30 years</i></div></div>
   </div>
   <script>
     {
       const tl = gsap.timeline({ paused: true });
       tl.fromTo("#hook-bar", { scaleX: 0.12, transformOrigin: "0 50%" }, { scaleX: 1, duration: 0.5, ease: "power4.out" }, 0.05);
-      tl.fromTo("#hook-maya-in", { scale: 1.5, rotation: -8, opacity: 0 }, { scale: 1, rotation: -2, opacity: 1, duration: 0.28, ease: "back.out(2)" }, 0.45);
-      tl.fromTo("#hook-jake-in", { scale: 1.5, rotation: 8, opacity: 0 }, { scale: 1, rotation: 2, opacity: 1, duration: 0.28, ease: "back.out(2)" }, 0.85);
-      tl.to("#hook-maya-in", { y: -18, duration: 0.16, ease: "power2.out", yoyo: true, repeat: 1 }, 1.7);
-      tl.to("#hook-jake-in", { y: -18, duration: 0.16, ease: "power2.out", yoyo: true, repeat: 1 }, 2.05);
+      tl.fromTo("#hook-maya-in", { scale: 1.5, rotation: -8, opacity: 0 }, { scale: 1, rotation: -2, opacity: 1, duration: 0.28, ease: "back.out(2)" }, 2.149);
+      tl.fromTo("#hook-jake-in", { scale: 1.5, rotation: 8, opacity: 0 }, { scale: 1, rotation: 2, opacity: 1, duration: 0.28, ease: "back.out(2)" }, 2.599);
+      tl.to({}, { duration: 0.01 }, 3.821);
       window.__timelines["hook"] = tl;
     }
   </script>
