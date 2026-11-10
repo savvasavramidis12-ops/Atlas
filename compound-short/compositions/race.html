@@ -1,0 +1,68 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #ffd21f; font-family: "Archivo Black", sans-serif; color: #121212; }
+    #race-age { position: absolute; left: 90px; top: 200px; width: 900px; font-size: 190px; line-height: 1; letter-spacing: -0.02em; }
+    #race-age small { font-size: 80px; margin-right: 24px; }
+    #race-base { position: absolute; left: 60px; top: 1160px; width: 960px; height: 12px; background: #121212; }
+    .race-col { position: absolute; top: 540px; width: 400px; height: 620px; }
+    #race-mcol { left: 110px; } #race-jcol { left: 570px; }
+    .race-fill { position: absolute; inset: 0; }
+    #race-mfill { background: #0b7a3e; } #race-jfill { background: #e8452c; }
+    .race-val { position: absolute; left: -20px; width: 440px; top: 540px; text-align: center; font-size: 74px; line-height: 1; }
+    .race-name { position: absolute; top: 1184px; width: 400px; text-align: center; font-size: 64px; line-height: 1; }
+    #race-mname { left: 110px; } #race-jname { left: 570px; }
+    .race-note { position: absolute; top: 1264px; width: 400px; text-align: center; font-family: "Inter", sans-serif; font-weight: 900; font-size: 34px; }
+    #race-mnote { left: 110px; } #race-jnote { left: 570px; }
+    #race-fine { position: absolute; left: 90px; top: 392px; width: 900px; font-family: "Inter", sans-serif; font-weight: 700; font-size: 32px; }
+  </style>
+  <div id="root" data-composition-id="race" data-width="1080" data-height="1920">
+    <div id="race-age" class="clip" data-start="0" data-duration="7.4"><small>AGE</small><span id="race-age-n">25</span></div>
+    <div id="race-fine" class="clip" data-start="0" data-duration="7.4">Example: both earn 7% a year</div>
+    <div id="race-mcol" class="clip race-col" data-start="0" data-duration="7.4" data-layout-allow-overflow>
+      <div id="race-mfill" class="race-fill"></div>
+      <div id="race-mval" class="race-val">$0</div>
+    </div>
+    <div id="race-jcol" class="clip race-col" data-start="0" data-duration="7.4" data-layout-allow-overflow>
+      <div id="race-jfill" class="race-fill"></div>
+      <div id="race-jval" class="race-val">$0</div>
+    </div>
+    <div id="race-mname" class="clip race-name" data-start="0" data-duration="7.4">MAYA</div>
+    <div id="race-jname" class="clip race-name" data-start="0" data-duration="7.4">JAKE</div>
+    <div id="race-baseclip" class="clip" data-start="0" data-duration="7.4"><div id="race-base"></div></div>
+    <div id="race-mnote" class="clip race-note" data-start="0" data-duration="7.4"><div id="race-mnote-in">STOPPED AT 35</div></div>
+    <div id="race-jnote" class="clip race-note" data-start="0" data-duration="7.4"><div id="race-jnote-in">STARTED AT 35</div></div>
+  </div>
+  <script>
+    {
+      const r = 0.07 / 12, H = 620, MAX = 281000;
+      const maya = (m) => ((200 * (Math.pow(1 + r, Math.min(m, 120)) - 1)) / r) * Math.pow(1 + r, Math.max(0, m - 120));
+      const jake = (m) => (200 * (Math.pow(1 + r, Math.max(0, m - 120)) - 1)) / r;
+      const fmt = (v) => "$" + Math.round(v).toLocaleString("en-US");
+      const q = (s) => document.querySelector(s);
+      const p = { m: 0 };
+      const draw = () => {
+        const mv = maya(p.m), jv = jake(p.m);
+        const ms = Math.max(0.004, mv / MAX), js = Math.max(0.004, jv / MAX);
+        gsap.set("#race-mfill", { scaleY: ms, transformOrigin: "50% 100%" });
+        gsap.set("#race-jfill", { scaleY: js, transformOrigin: "50% 100%" });
+        gsap.set("#race-mval", { y: -H * ms - 4 });
+        gsap.set("#race-jval", { y: -H * js - 4 });
+        const done = p.m >= 479.5;
+        q("#race-mval").textContent = fmt(done ? mv : Math.round(mv / 100) * 100);
+        q("#race-jval").textContent = fmt(done ? jv : Math.round(jv / 100) * 100);
+        q("#race-age-n").textContent = String(Math.floor(25 + p.m / 12 + 1e-6));
+      };
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#race-base", { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.3, ease: "power4.out" }, 0);
+      tl.fromTo(p, { m: 0 }, { m: 120, duration: 1.4, ease: "none", onUpdate: draw }, 0.4);
+      tl.fromTo(p, { m: 120 }, { m: 480, duration: 3.7, ease: "power1.in", onUpdate: draw, immediateRender: false }, 1.8);
+      tl.fromTo("#race-mnote-in", { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 1, duration: 0.2, ease: "back.out(2)" }, 1.8);
+      tl.fromTo("#race-jnote-in", { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 1, duration: 0.2, ease: "back.out(2)" }, 2.0);
+      tl.fromTo("#race-mval", { scale: 1 }, { scale: 1.18, duration: 0.18, ease: "power2.out", yoyo: true, repeat: 1, transformOrigin: "50% 100%" }, 5.7);
+      tl.fromTo("#race-jfill", { opacity: 1 }, { opacity: 0.45, duration: 0.3, ease: "power2.out" }, 6.2);
+      tl.to({}, { duration: 0.01 }, 7.39);
+      draw();
+      window.__timelines["race"] = tl;
+    }
+  </script>
+</template>

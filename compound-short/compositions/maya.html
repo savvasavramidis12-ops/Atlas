@@ -1,0 +1,36 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #ffd21f; font-family: "Archivo Black", sans-serif; color: #fff; }
+    #maya-field { position: absolute; inset: 0; background: #0b7a3e; }
+    .maya-l { position: absolute; left: 90px; width: 900px; text-align: left; }
+    #maya-name { top: 220px; font-size: 250px; line-height: 1; letter-spacing: -0.02em; }
+    #maya-l1 { top: 520px; font-size: 104px; color: #ffd21f; }
+    #maya-l2 { top: 670px; font-family: "Inter", sans-serif; font-weight: 900; font-size: 78px; }
+    #maya-l3 { top: 780px; font-family: "Inter", sans-serif; font-weight: 900; font-size: 78px; }
+    #maya-stamp { position: absolute; left: 90px; top: 990px; width: 800px; height: 250px; }
+    #maya-stamp-in { position: absolute; inset: 0; background: #ffd21f; color: #121212; display: flex; flex-direction: column; justify-content: center; padding-left: 44px; }
+    #maya-stamp-in i { font-family: "Inter", sans-serif; font-style: normal; font-weight: 900; font-size: 48px; }
+    #maya-stamp-in b { font-weight: 400; font-size: 132px; line-height: 1.05; }
+  </style>
+  <div id="root" data-composition-id="maya" data-width="1080" data-height="1920">
+    <div id="maya-fieldclip" class="clip" data-start="0" data-duration="3"><div id="maya-field"></div></div>
+    <div id="maya-name" class="clip maya-l" data-start="0" data-duration="3"><div id="maya-name-in">MAYA</div></div>
+    <div id="maya-l1" class="clip maya-l" data-start="0" data-duration="3"><div id="maya-l1-in">$200 a month</div></div>
+    <div id="maya-l2" class="clip maya-l" data-start="0" data-duration="3"><div id="maya-l2-in">from age 25 to 35</div></div>
+    <div id="maya-l3" class="clip maya-l" data-start="0" data-duration="3"><div id="maya-l3-in">then stops.</div></div>
+    <div id="maya-stamp" class="clip" data-start="0" data-duration="3"><div id="maya-stamp-in"><i>TOTAL PUT IN</i><b>$24,000</b></div></div>
+  </div>
+  <script>
+    {
+      const tl = gsap.timeline({ paused: true });
+      const hide = "inset(0% 100% 0% 0%)", show = "inset(0% 0% 0% 0%)";
+      tl.fromTo("#maya-field", { scaleY: 0, transformOrigin: "50% 0%" }, { scaleY: 1, duration: 0.32, ease: "power4.out" }, 0);
+      tl.fromTo("#maya-name-in", { scale: 1.35, opacity: 0, transformOrigin: "left 50%" }, { scale: 1, opacity: 1, duration: 0.24, ease: "power4.out" }, 0.14);
+      tl.fromTo("#maya-l1-in", { clipPath: hide }, { clipPath: show, duration: 0.3, ease: "power3.out" }, 0.5);
+      tl.fromTo("#maya-l2-in", { clipPath: hide }, { clipPath: show, duration: 0.3, ease: "power3.out" }, 0.85);
+      tl.fromTo("#maya-l3-in", { clipPath: hide }, { clipPath: show, duration: 0.3, ease: "power3.out" }, 1.2);
+      tl.fromTo("#maya-stamp-in", { scale: 1.6, rotation: -9, opacity: 0 }, { scale: 1, rotation: -3, opacity: 1, duration: 0.22, ease: "back.out(1.6)" }, 1.75);
+      window.__timelines["maya"] = tl;
+    }
+  </script>
+</template>

@@ -1,0 +1,36 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #ffd21f; font-family: "Archivo Black", sans-serif; color: #fff; }
+    #jake-field { position: absolute; inset: 0; background: #e8452c; }
+    .jake-l { position: absolute; left: 90px; width: 900px; text-align: right; }
+    #jake-name { top: 220px; font-size: 250px; line-height: 1; letter-spacing: -0.02em; }
+    #jake-l1 { top: 520px; font-size: 104px; color: #121212; }
+    #jake-l2 { top: 670px; font-family: "Inter", sans-serif; font-weight: 900; font-size: 78px; }
+    #jake-l3 { top: 780px; font-family: "Inter", sans-serif; font-weight: 900; font-size: 78px; }
+    #jake-stamp { position: absolute; left: 90px; top: 990px; width: 800px; height: 250px; }
+    #jake-stamp-in { position: absolute; inset: 0; background: #ffd21f; color: #121212; display: flex; flex-direction: column; justify-content: center; padding-left: 44px; }
+    #jake-stamp-in i { font-family: "Inter", sans-serif; font-style: normal; font-weight: 900; font-size: 48px; }
+    #jake-stamp-in b { font-weight: 400; font-size: 132px; line-height: 1.05; }
+  </style>
+  <div id="root" data-composition-id="jake" data-width="1080" data-height="1920">
+    <div id="jake-fieldclip" class="clip" data-start="0" data-duration="3"><div id="jake-field"></div></div>
+    <div id="jake-name" class="clip jake-l" data-start="0" data-duration="3"><div id="jake-name-in">JAKE</div></div>
+    <div id="jake-l1" class="clip jake-l" data-start="0" data-duration="3"><div id="jake-l1-in">$200 a month</div></div>
+    <div id="jake-l2" class="clip jake-l" data-start="0" data-duration="3"><div id="jake-l2-in">from age 35 to 65</div></div>
+    <div id="jake-l3" class="clip jake-l" data-start="0" data-duration="3"><div id="jake-l3-in">never stops.</div></div>
+    <div id="jake-stamp" class="clip" data-start="0" data-duration="3"><div id="jake-stamp-in"><i>TOTAL PUT IN</i><b>$72,000</b></div></div>
+  </div>
+  <script>
+    {
+      const tl = gsap.timeline({ paused: true });
+      const hide = "inset(0% 0% 0% 100%)", show = "inset(0% 0% 0% 0%)";
+      tl.fromTo("#jake-field", { scaleY: 0, transformOrigin: "50% 100%" }, { scaleY: 1, duration: 0.32, ease: "power4.out" }, 0);
+      tl.fromTo("#jake-name-in", { scale: 1.35, opacity: 0, transformOrigin: "right 50%" }, { scale: 1, opacity: 1, duration: 0.24, ease: "power4.out" }, 0.14);
+      tl.fromTo("#jake-l1-in", { clipPath: hide }, { clipPath: show, duration: 0.3, ease: "power3.out" }, 0.5);
+      tl.fromTo("#jake-l2-in", { clipPath: hide }, { clipPath: show, duration: 0.3, ease: "power3.out" }, 0.85);
+      tl.fromTo("#jake-l3-in", { clipPath: hide }, { clipPath: show, duration: 0.3, ease: "power3.out" }, 1.2);
+      tl.fromTo("#jake-stamp-in", { scale: 1.6, rotation: 9, opacity: 0 }, { scale: 1, rotation: 3, opacity: 1, duration: 0.22, ease: "back.out(1.6)" }, 1.75);
+      window.__timelines["jake"] = tl;
+    }
+  </script>
+</template>

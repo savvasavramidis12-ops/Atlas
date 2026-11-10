@@ -1,0 +1,29 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #ffd21f; font-family: "Archivo Black", sans-serif; color: #121212; }
+    .ask-l { position: absolute; left: 90px; width: 900px; }
+    #ask-a { top: 250px; font-size: 96px; }
+    #ask-b { top: 350px; font-size: 300px; line-height: 1; letter-spacing: -0.03em; color: #e8452c; }
+    #ask-c { top: 650px; font-size: 96px; }
+    #ask-q { top: 900px; height: 330px; width: 860px; }
+    #ask-q-in { position: absolute; inset: 0; background: #121212; color: #fff; display: flex; flex-direction: column; justify-content: center; padding-left: 44px; font-size: 100px; line-height: 1.08; }
+    #ask-q-in span { color: #ffd21f; }
+  </style>
+  <div id="root" data-composition-id="ask" data-width="1080" data-height="1920">
+    <div id="ask-a" class="clip ask-l" data-start="0" data-duration="3.4"><div id="ask-a-in">JAKE PUT IN</div></div>
+    <div id="ask-b" class="clip ask-l" data-start="0" data-duration="3.4"><div id="ask-b-in">3×</div></div>
+    <div id="ask-c" class="clip ask-l" data-start="0" data-duration="3.4"><div id="ask-c-in">MORE MONEY</div></div>
+    <div id="ask-q" class="clip ask-l" data-start="0" data-duration="3.4"><div id="ask-q-in"><div>SO JAKE WINS…</div><span>RIGHT?</span></div></div>
+  </div>
+  <script>
+    {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#ask-a-in", { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.25, ease: "power3.out" }, 0.05);
+      tl.fromTo("#ask-b-in", { scale: 2.2, opacity: 0, transformOrigin: "0% 50%" }, { scale: 1, opacity: 1, duration: 0.26, ease: "power4.out" }, 0.3);
+      tl.fromTo("#ask-c-in", { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.25, ease: "power3.out" }, 0.6);
+      tl.fromTo("#ask-q-in", { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.3, ease: "power4.out" }, 1.45);
+      tl.fromTo("#ask-q-in span", { opacity: 0, scale: 1.4, transformOrigin: "0% 50%" }, { opacity: 1, scale: 1, duration: 0.2, ease: "back.out(2)" }, 2.0);
+      window.__timelines["ask"] = tl;
+    }
+  </script>
+</template>
