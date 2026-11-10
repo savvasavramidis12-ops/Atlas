@@ -1,0 +1,28 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #ffd21f; font-family: "Archivo Black", sans-serif; color: #121212; }
+    #pay-field { position: absolute; inset: 0; background: #0b7a3e; }
+    .pay-l { position: absolute; left: 90px; width: 900px; color: #fff; }
+    #pay-win { top: 220px; font-size: 170px; line-height: 0.95; letter-spacing: -0.02em; }
+    #pay-m { top: 620px; font-family: "Inter", sans-serif; font-weight: 900; font-size: 60px; line-height: 1.25; }
+    #pay-m b { font-family: "Archivo Black", sans-serif; font-weight: 400; font-size: 136px; color: #ffd21f; display: block; line-height: 1.05; }
+    #pay-j { top: 960px; font-family: "Inter", sans-serif; font-weight: 700; font-size: 46px; line-height: 1.3; }
+  </style>
+  <div id="root" data-composition-id="payoff" data-width="1080" data-height="1920">
+    <div id="pay-fieldclip" class="clip" data-start="0" data-duration="6.71"><div id="pay-field"></div></div>
+    <div id="pay-win" class="clip pay-l" data-start="0" data-duration="6.71"><div id="pay-win-in">LENA<br />GEWINNT</div></div>
+    <div id="pay-m" class="clip pay-l" data-start="0" data-duration="6.71"><div id="pay-m-in">Aus 24.000 € wurden<b>280.968 €</b></div></div>
+    <div id="pay-j" class="clip pay-l" data-start="0" data-duration="6.71"><div id="pay-j-in">Tom: aus 72.000 € wurden 243.994 €</div></div>
+  </div>
+  <script>
+    {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#pay-field", { scaleY: 0, transformOrigin: "50% 100%" }, { scaleY: 1, duration: 0.3, ease: "power4.out" }, 0);
+      tl.fromTo("#pay-win-in", { scale: 1.6, opacity: 0, transformOrigin: "0% 50%" }, { scale: 1, opacity: 1, duration: 0.26, ease: "power4.out" }, 0.15);
+      tl.fromTo("#pay-m-in", { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.35, ease: "power3.out" }, 1.3);
+      tl.fromTo("#pay-j-in", { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.35, ease: "power3.out" }, 4.359);
+      tl.to({}, { duration: 0.01 }, 6.69);
+      window.__timelines["payoff"] = tl;
+    }
+  </script>
+</template>

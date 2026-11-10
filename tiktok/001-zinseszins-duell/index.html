@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      :root {
+        --yellow: #ffd21f;
+        --ink: #121212;
+        --green: #0b7a3e;
+        --orange: #e8452c;
+        --white: #ffffff;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: var(--yellow);
+      }
+      #root {
+        position: relative;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        font-family: "Archivo Black", sans-serif;
+        color: var(--ink);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="65.53" data-width="1080" data-height="1920">
+      <div id="hook" data-composition-id="hook" data-composition-src="compositions/hook.html" data-start="0.0" data-duration="4.059" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="maya" data-composition-id="maya" data-composition-src="compositions/maya.html" data-start="4.059" data-duration="9.974" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="jake" data-composition-id="jake" data-composition-src="compositions/jake.html" data-start="14.033" data-duration="9.73" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="ask" data-composition-id="ask" data-composition-src="compositions/ask.html" data-start="23.763" data-duration="7.143" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="race" data-composition-id="race" data-composition-src="compositions/race.html" data-start="30.906" data-duration="13.293" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="payoff" data-composition-id="payoff" data-composition-src="compositions/payoff.html" data-start="44.199" data-duration="6.71" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="why" data-composition-id="why" data-composition-src="compositions/why.html" data-start="50.909" data-duration="7.82" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="end" data-composition-id="end" data-composition-src="compositions/end.html" data-start="58.729" data-duration="6.801" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <audio id="vo" class="clip" src="assets/voice.wav" data-start="0" data-duration="65.53" data-track-index="2" data-volume="1"></audio>
+    </div>
+    <script>
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>

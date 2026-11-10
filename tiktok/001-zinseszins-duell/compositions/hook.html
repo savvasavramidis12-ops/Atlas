@@ -1,0 +1,30 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #ffd21f; font-family: "Archivo Black", sans-serif; color: #121212; }
+    #hook-title { position: absolute; left: 90px; top: 250px; width: 900px; font-size: 150px; line-height: 0.96; letter-spacing: -0.02em; }
+    #hook-title span { display: block; }
+    #hook-bar { position: absolute; left: 90px; top: 730px; width: 820px; height: 26px; background: #121212; }
+    .hook-tag { position: absolute; top: 860px; width: 430px; height: 330px; color: #fff; }
+    .hook-tag b { font-size: 104px; font-weight: 400; line-height: 1; }
+    .hook-tag i { font-family: "Inter", sans-serif; font-style: normal; font-weight: 700; font-size: 44px; margin-top: 16px; }
+    #hook-maya { left: 90px; } #hook-jake { left: 550px; }
+    .hook-in { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; padding-left: 40px; }
+    #hook-maya-in { background: #0b7a3e; } #hook-jake-in { background: #e8452c; }
+  </style>
+  <div id="root" data-composition-id="hook" data-width="1080" data-height="1920">
+    <h1 id="hook-title" class="clip" data-start="0" data-duration="4.059"><span>WER GEHT</span><span>REICHER</span><span>IN RENTE?</span></h1>
+    <div id="hook-barclip" class="clip" data-start="0" data-duration="4.059"><div id="hook-bar"></div></div>
+    <div id="hook-maya" class="clip hook-tag" data-start="0" data-duration="4.059"><div id="hook-maya-in" class="hook-in"><b>LENA</b><i>spart 10 Jahre</i></div></div>
+    <div id="hook-jake" class="clip hook-tag" data-start="0" data-duration="4.059"><div id="hook-jake-in" class="hook-in"><b>TOM</b><i>spart 30 Jahre</i></div></div>
+  </div>
+  <script>
+    {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#hook-bar", { scaleX: 0.12, transformOrigin: "0 50%" }, { scaleX: 1, duration: 0.5, ease: "power4.out" }, 0.05);
+      tl.fromTo("#hook-maya-in", { scale: 1.5, rotation: -8, opacity: 0 }, { scale: 1, rotation: -2, opacity: 1, duration: 0.28, ease: "back.out(2)" }, 1.951);
+      tl.fromTo("#hook-jake-in", { scale: 1.5, rotation: 8, opacity: 0 }, { scale: 1, rotation: 2, opacity: 1, duration: 0.28, ease: "back.out(2)" }, 2.401);
+      tl.to({}, { duration: 0.01 }, 4.039);
+      window.__timelines["hook"] = tl;
+    }
+  </script>
+</template>
